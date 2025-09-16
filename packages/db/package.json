@@ -1,0 +1,17 @@
+{
+  "name": "@xexpo/db",
+  "version": "1.0.0",
+  "description": "Database utilities and models for XExpo application",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mongoose": "^5.11.96"
+  }
+}
