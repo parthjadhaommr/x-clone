@@ -1,0 +1,19 @@
+{
+    "extends": "../../packages/typescript-config/base.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src",
+        "declaration": true,
+        "emitDeclarationOnly": false,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts",
+        "dist",
+        "node_modules"
+    ]
+}
