@@ -3,6 +3,8 @@ import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
 import userRoutes from "./routes/user.route";
 import postRoutes from "./routes/post.route"
+import commentRoutes from "./routes/comment.route";
+import notificationRoutes from "./routes/notification.route";
 
 import { ENV } from './config/env';
 import { connectDB } from './config/db';
@@ -15,6 +17,8 @@ app.use(express.json())
 app.use(clerkMiddleware())
 app.use("/api/users", userRoutes)
 app.use("/api/posts", postRoutes)
+app.use("/api/comments", commentRoutes)
+app.use("api/notification", notificationRoutes)
 
 app.get("/", (req, res) => {
     res.json({ message: "API is running", status: "healthy" });
