@@ -1,4 +1,4 @@
-import { error } from "console";
+
 import { Notification, User } from "@xexpo/db";
 
 import asyncHandler from "express-async-handler";
@@ -23,7 +23,7 @@ export const getUserProfile = asyncHandler(
 export const updateUserProfile = asyncHandler(
     async (req: Request, res: Response) => {
         const { userId } = getAuth(req)
-        console.log(userId)
+
 
         // Define allowed fields for update
         const allowedFields = ['firstName', 'lastName', 'bio', 'profilePicture'];
@@ -57,9 +57,10 @@ export const syncUser = asyncHandler(
             res.status(400).json({ message: "invalid request" })
             return
         }
-        const existingUser = await User.find({ clerkId: userId })
-        if (!existingUser) {
+        const existingUser = await User.findOne({ clerkId: userId })
+        if (existingUser) {
             res.status(200).json({ user: existingUser, message: "User already exists" })
+            return
         }
         const clerkUser = await clerkClient.users.getUser(userId)
         const userData = {

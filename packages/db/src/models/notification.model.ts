@@ -33,6 +33,22 @@ export const notificationSchema = new mongoose.Schema(
     }
 );
 
+// Add custom validation for notification type consistency
+notificationSchema.pre('save', function() {
+    if (this.type === 'follow') {
+        if (this.post || this.comment) {
+            throw new Error('Follow notifications should not have post or comment references');
+        }
+    } else if (this.type === 'like' || this.type === 'comment') {
+        if (!this.post) {
+            throw new Error(`${this.type} notifications must reference a post`);
+        }
+        if (this.type === 'comment' && !this.comment) {
+            throw new Error('Comment notifications must reference a comment');
+        }
+    }
+});
+
 const Notification = mongoose.model("Notification", notificationSchema);
 
 export default Notification;
