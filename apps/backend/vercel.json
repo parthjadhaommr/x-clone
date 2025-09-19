@@ -1,13 +1,15 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "src/server.ts",
-        "use": "@vercel/node@2.12.2",
-        "config": { "runtime": "nodejs22.x" }
-      }
+        {
+            "src": "src/server.ts",
+            "use": "@vercel/node"
+        }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "src/server.ts" }
+        {
+            "src": "/(.*)",
+            "dest": "src/server.ts"
+        }
     ]
-  }
+}
