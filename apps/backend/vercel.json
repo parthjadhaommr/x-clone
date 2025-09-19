@@ -5,7 +5,7 @@
             "src": "apps/backend/package.json",
             "use": "@vercel/node",
             "config": {
-                "outputDirectory": "dist"
+                "includeFiles": "dist"
             }
         }
     ],
