@@ -24,13 +24,17 @@ app.get("/", (req, res) => {
     res.json({ message: "API is running", status: "healthy" });
 })
 
-connectDB().catch((error) => {
-    console.error('Failed to connect to database:', error);
-    process.exit(1);
-});
-
-const port = ENV.PORT || 5001;
-if (isNaN(Number(port)) || Number(port) < 1 || Number(port) > 65535) {
-    throw new Error(`Invalid port: ${port}`);
+const startServer = async () => {
+    try {
+        await connectDB()
+        if (ENV.NODE_ENV !== "production") {
+            app.listen(ENV.PORT, () => console.log("Server is up and running on Port", ENV.PORT))
+        }
+    } catch (error) {
+        console.log("Failed to start Server", error)
+        process.exit(1)
+    }
 }
-app.listen(port, () => console.log("Server is up and running on port:", port));
+
+// export for vercel
+export default app
