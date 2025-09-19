@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from "express";
 import { getAuth } from "@clerk/express";
-import { Comment, Post, User } from "@xexpo/db";
+import { Comment, Post, User } from "@parth-jadhao/db";
 import asyncHandler from "express-async-handler";
 
 export const getComments: RequestHandler<{ postId: string }> = asyncHandler(

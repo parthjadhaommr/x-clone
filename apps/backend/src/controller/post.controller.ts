@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import { Notification, Post, User, Comment } from "@xexpo/db";
+import { Notification, Post, User, Comment } from "@parth-jadhao/db";
 import { Request, RequestHandler, Response } from "express";
 import { getAuth } from "@clerk/express";
 import cloudinary from "../config/cloudinary";

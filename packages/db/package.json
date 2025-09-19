@@ -1,18 +1,28 @@
 {
-  "name": "@xexpo/db",
+  "name": "@parth-jadhao/db",
   "version": "1.0.0",
-  "description": "Database utilities and models for XExpo application",
+  "description": "Database models and utilities for x-clone project",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "models"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "mongoose": "^8.0.0",
-    "@types/mongoose": "^5.11.96"
+    "mongoose": "^8.16.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "@types/node": "^24.4.0"
   }
 }

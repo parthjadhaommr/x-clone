@@ -1,5 +1,5 @@
 
-import { Notification, User } from "@xexpo/db";
+import { Notification, User } from "@parth-jadhao/db";
 
 import asyncHandler from "express-async-handler";
 import { Request, RequestHandler, Response } from "express";
