@@ -1,16 +1,5 @@
 {
-    "version": 3,
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/node",
-            "config": {
-                "includeFiles": [
-                    "dist/**"
-                ]
-            }
-        }
-    ],
+    "version": 4,
     "functions": {
         "**/*.ts": {
             "runtime": "nodejs22.x"
