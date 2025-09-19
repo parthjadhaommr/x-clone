@@ -1,13 +1,10 @@
 import asyncHandler from "express-async-handler";
 import { Notification, Post, User, Comment } from "@xexpo/db";
-import { Request, Response } from "express";
-import { error } from "console";
+import { Request, RequestHandler, Response } from "express";
 import { getAuth } from "@clerk/express";
 import cloudinary from "../config/cloudinary";
-import { format } from "path";
-import upload from "../middleware/upload.middleware";
 
-export const getPosts = asyncHandler(
+export const getPosts: RequestHandler = asyncHandler(
     async (req: Request, res: Response) => {
         const posts = await Post.find()
             .sort({ createdAt: -1 })
@@ -23,7 +20,7 @@ export const getPosts = asyncHandler(
     }
 )
 
-export const getPost = asyncHandler(
+export const getPost: RequestHandler = asyncHandler(
     async (req: Request, res: Response) => {
         const { postId } = req.params;
 
@@ -45,7 +42,7 @@ export const getPost = asyncHandler(
     }
 )
 
-export const getUserPosts = asyncHandler(
+export const getUserPosts: RequestHandler = asyncHandler(
     async (req: Request, res: Response) => {
         const { username } = req.params
 
@@ -70,7 +67,7 @@ export const getUserPosts = asyncHandler(
     }
 )
 
-export const createPost = asyncHandler(
+export const createPost: RequestHandler = asyncHandler(
     async (req, res) => {
         const { userId } = getAuth(req);
         const { content } = req.body;
@@ -120,7 +117,7 @@ export const createPost = asyncHandler(
     }
 )
 
-export const likePost = asyncHandler(
+export const likePost: RequestHandler = asyncHandler(
     async (req, res) => {
         const { userId } = getAuth(req);
         const { postId } = req.params;
@@ -161,7 +158,7 @@ export const likePost = asyncHandler(
     }
 )
 
-export const deletePosts = asyncHandler(
+export const deletePosts: RequestHandler = asyncHandler(
     async (req: Request, res: Response) => {
         const { userId } = getAuth(req);
         const { postId } = req.params

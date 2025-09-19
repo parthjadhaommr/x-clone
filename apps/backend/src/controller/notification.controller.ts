@@ -1,11 +1,11 @@
 import { getAuth } from "@clerk/express"
 import { Notification, User } from "@xexpo/db"
 import asyncHandler from "express-async-handler"
-import { Request, Response } from "express";
+import { Request, Response, RequestHandler } from "express";
 import { error } from "console";
 
-export const getNotification = asyncHandler(
-    async (req: Request, res: Response) => {
+export const getNotification: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
         const { userId } = getAuth(req)
 
         const user = await User.findOne({ clerkId: userId })
@@ -24,8 +24,8 @@ export const getNotification = asyncHandler(
         return
     }
 )
-export const deleteNotification = asyncHandler(
-    async (req, res) => {
+export const deleteNotification: RequestHandler = asyncHandler(
+    async (req: Request, res: Response): Promise<void> => {
         const { userId } = getAuth(req)
         const { notificationId } = req.params
 

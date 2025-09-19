@@ -2,9 +2,11 @@
     "extends": "../../packages/typescript-config/base.json",
     "compilerOptions": {
         "outDir": "dist",
-        "rootDir": "src"
+        "rootDir": "src",
+        "noEmitOnError": false,
+        "skipLibCheck": true,
     },
     "include": [
         "src"
-    ]
+    ],
 }

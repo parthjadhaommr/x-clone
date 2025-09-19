@@ -2,10 +2,10 @@
 import { Notification, User } from "@xexpo/db";
 
 import asyncHandler from "express-async-handler";
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
 import { clerkClient, getAuth } from "@clerk/express";
 
-export const getUserProfile = asyncHandler(
+export const getUserProfile: RequestHandler = asyncHandler(
     async (req: Request, res: Response): Promise<void> => {
         const { username } = req.params;
         const user = await User.findOne({ username });
@@ -20,7 +20,7 @@ export const getUserProfile = asyncHandler(
     }
 );
 
-export const updateUserProfile = asyncHandler(
+export const updateUserProfile: RequestHandler = asyncHandler(
     async (req: Request, res: Response) => {
         const { userId } = getAuth(req)
 
@@ -50,7 +50,7 @@ export const updateUserProfile = asyncHandler(
     }
 )
 
-export const syncUser = asyncHandler(
+export const syncUser: RequestHandler = asyncHandler(
     async (req, res) => {
         const { userId } = getAuth(req)
         if (!userId) {
@@ -79,7 +79,7 @@ export const syncUser = asyncHandler(
     }
 )
 
-export const getCurrentUser = asyncHandler(
+export const getCurrentUser: RequestHandler = asyncHandler(
     async (req, res) => {
         const { userId } = getAuth(req)
         const user = await User.findOne({ clerkId: userId })
@@ -94,7 +94,7 @@ export const getCurrentUser = asyncHandler(
     }
 )
 
-export const followUser = asyncHandler(
+export const followUser: RequestHandler = asyncHandler(
     async (req, res) => {
         const { userId } = getAuth(req);
         const { targetUserId } = req.params;

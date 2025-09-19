@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Application, application } from 'express'
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
 import userRoutes from "./routes/user.route";
@@ -10,7 +10,7 @@ import { ENV } from './config/env';
 import { connectDB } from './config/db';
 
 
-const app = express();
+const app: Application = express();
 
 app.use(cors())
 app.use(express.json())

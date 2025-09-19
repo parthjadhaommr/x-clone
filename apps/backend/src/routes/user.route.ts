@@ -1,8 +1,8 @@
-import express from "express";
+import express, { Router } from "express";
 import { followUser, getCurrentUser, getUserProfile, syncUser, updateUserProfile } from "../controller/user.controller";
 import { protectRoute } from "../middleware/auth.middleware";
 
-const router = express.Router()
+const router: Router = express.Router()
 
 router.get("/profile/:username", getUserProfile)
 
