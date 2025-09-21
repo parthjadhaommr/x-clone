@@ -129,6 +129,10 @@ exports.createPost = (0, express_async_handler_1.default)(function (req, res) { 
                 userId = (0, express_1.getAuth)(req).userId;
                 content = req.body.content;
                 imageFile = req.file;
+<<<<<<< Updated upstream
+=======
+                console.log(imageFile);
+>>>>>>> Stashed changes
                 if (!content && !imageFile) {
                     res.status(400).json({ error: "Post must contain either text or image" });
                     return [2 /*return*/];

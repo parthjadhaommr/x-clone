@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var multer_1 = __importDefault(require("multer"));
+<<<<<<< Updated upstream
 var storage = multer_1.default.memoryStorage();
 var fileFilter = function (req, file, callback) {
     if (file.mimetype.startsWith("image/")) {
@@ -11,11 +12,39 @@ var fileFilter = function (req, file, callback) {
     }
     else {
         callback(null, false);
+=======
+// const storage = multer.memoryStorage();
+// const fileFilter = (req: Request, file: Express.Multer.File, callback: FileFilterCallback) => {
+//     if (file.mimetype.startsWith("image/")) {
+//         callback(null, true);
+//     } else {
+//         callback(null, false)
+//     }
+// }
+// const upload = multer({
+//     storage: storage,
+//     fileFilter: fileFilter,
+//     limits: { fileSize: 5 * 1024 * 1024 }, //5 mb limit
+// })
+// export default upload
+// import multer from "multer";
+var storage = multer_1.default.memoryStorage();
+var fileFilter = function (req, file, cb) {
+    if (file.mimetype.startsWith("image/")) {
+        cb(null, true);
+    }
+    else {
+        cb(new Error("Only image files are allowed"));
+>>>>>>> Stashed changes
     }
 };
 var upload = (0, multer_1.default)({
     storage: storage,
     fileFilter: fileFilter,
+<<<<<<< Updated upstream
     limits: { fileSize: 5 * 1024 * 1024 }, //5 mb limit
+=======
+    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+>>>>>>> Stashed changes
 });
 exports.default = upload;

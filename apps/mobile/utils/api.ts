@@ -1,9 +1,15 @@
 import axios, { AxiosInstance } from "axios";
 import { useAuth } from "@clerk/clerk-expo";
 
+<<<<<<< Updated upstream
 const API_BASE_URL = "https://x-clone-backend-xi.vercel.app/api";
 // ! 🔥 localhost api would not work on your actual physical device
 // const API_BASE_URL = "http://localhost:5001/api";
+=======
+// const API_BASE_URL = "https://x-clone-backend-xi.vercel.app/api";
+// ! 🔥 localhost api would not work on your actual physical device
+const API_BASE_URL = "http://localhost:5001/api";
+>>>>>>> Stashed changes
 
 // this will basically create an authenticated api, pass the token into our headers
 export const createApiClient = (getToken: () => Promise<string | null>): AxiosInstance => {
