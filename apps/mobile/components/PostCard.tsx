@@ -1,36 +1,22 @@
 import { Post, User } from "@/types";
 import { formatDate, formatNumber } from "@/utils/formatter";
 import { AntDesign, Feather } from "@expo/vector-icons";
-<<<<<<< Updated upstream
-import { View, Text, Alert, Image, TouchableOpacity } from "react-native";
-=======
 import { View, Text, Alert, Image, TouchableOpacity, StyleSheet } from "react-native";
->>>>>>> Stashed changes
 
 interface PostCardProps {
     post: Post;
     onLike: (postId: string) => void;
     onDelete: (postId: string) => void;
-<<<<<<< Updated upstream
-=======
     onComment: (post: Post) => void;
->>>>>>> Stashed changes
     isLiked?: boolean;
     currentUser: User;
 }
 
-<<<<<<< Updated upstream
-const PostCard = ({ currentUser, onDelete, onLike, post, isLiked }: PostCardProps) => {
-    if (!currentUser?._id) {
-        return
-    }
-=======
 const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: PostCardProps) => {
     if (!currentUser?._id) {
         return null;
     }
 
->>>>>>> Stashed changes
     const isOwnPost = post?.user?._id === currentUser?._id;
 
     const handleDelete = () => {
@@ -45,25 +31,6 @@ const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: P
     };
 
     return (
-<<<<<<< Updated upstream
-        <View className="border-b border-gray-100 bg-white">
-            <View className="flex-row p-4">
-                <Image
-                    source={{ uri: post.user.profilePicture || "" }}
-                    className="w-12 h-12 rounded-full mr-3"
-                />
-
-                <View className="flex-1">
-                    <View className="flex-row items-center justify-between mb-1">
-                        <View className="flex-row items-center">
-                            <Text className="font-bold text-gray-900 mr-1">
-                                {post.user.firstName} {post.user.lastName}
-                            </Text>
-                            <Text className="text-gray-500 ml-1">
-                                @{post.user.username} · {formatDate(post.createdAt)}
-                            </Text>
-                        </View>
-=======
         <View style={styles.container}>
             <View style={styles.row}>
                 <Image
@@ -82,7 +49,6 @@ const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: P
                             </Text>
                         </View>
 
->>>>>>> Stashed changes
                         {isOwnPost && (
                             <TouchableOpacity onPress={handleDelete}>
                                 <Feather name="trash" size={20} color="#657786" />
@@ -91,47 +57,22 @@ const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: P
                     </View>
 
                     {post.content && (
-<<<<<<< Updated upstream
-                        <Text className="text-gray-900 text-base leading-5 mb-3">{post.content}</Text>
-                    )}
-=======
                         <Text style={styles.postContent}>{post.content}</Text>
                     )}
                     <Text>hello : {post.image}</Text>
->>>>>>> Stashed changes
 
                     {post.image && (
                         <Image
                             source={{ uri: post.image }}
-<<<<<<< Updated upstream
-                            className="w-full h-48 rounded-2xl mb-3"
-=======
                             // style={styles.postImage}
                             style = {{
                                 width : 48,
                                 height : 48
                             }}
->>>>>>> Stashed changes
                             resizeMode="cover"
                         />
                     )}
 
-<<<<<<< Updated upstream
-                    <View className="flex-row justify-between max-w-xs">
-                        <TouchableOpacity className="flex-row items-center" onPress={() => { }}>
-                            <Feather name="message-circle" size={18} color="#657786" />
-                            <Text className="text-gray-500 text-sm ml-2">
-                                {formatNumber(post.comments?.length || 0)}
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity className="flex-row items-center">
-                            <Feather name="repeat" size={18} color="#657786" />
-                            <Text className="text-gray-500 text-sm ml-2">0</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity className="flex-row items-center" onPress={() => onLike(post._id)}>
-=======
                     <View style={styles.actionsRow}>
                         <TouchableOpacity style={styles.actionButton} onPress={() => { onComment(post) }}>
                             <Feather name="message-circle" size={18} color="#657786" />
@@ -144,27 +85,17 @@ const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: P
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.actionButton} onPress={() => onLike(post._id)}>
->>>>>>> Stashed changes
                             {isLiked ? (
                                 <AntDesign name="heart" size={18} color="#E0245E" />
                             ) : (
                                 <Feather name="heart" size={18} color="#657786" />
                             )}
-<<<<<<< Updated upstream
-
-                            <Text className={`text-sm ml-2 ${isLiked ? "text-red-500" : "text-gray-500"}`}>
-=======
                             <Text style={[styles.actionText, isLiked ? styles.likedText : styles.unlikedText]}>
->>>>>>> Stashed changes
                                 {formatNumber(post.likes?.length || 0)}
                             </Text>
                         </TouchableOpacity>
 
-<<<<<<< Updated upstream
-                        <TouchableOpacity>
-=======
                         <TouchableOpacity style={styles.actionButton}>
->>>>>>> Stashed changes
                             <Feather name="share" size={18} color="#657786" />
                         </TouchableOpacity>
                     </View>
@@ -174,9 +105,6 @@ const PostCard = ({ currentUser, onDelete, onLike, post, isLiked, onComment }: P
     );
 };
 
-<<<<<<< Updated upstream
-export default PostCard;
-=======
 export default PostCard;
 
 const styles = StyleSheet.create({
@@ -251,4 +179,3 @@ const styles = StyleSheet.create({
         color: "#6B7280", // gray-500
     },
 });
->>>>>>> Stashed changes

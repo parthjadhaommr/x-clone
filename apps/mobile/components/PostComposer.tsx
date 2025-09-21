@@ -1,9 +1,6 @@
 import { useCreatePost } from "@/hooks/useCreatePost";
 import { useUser } from "@clerk/clerk-react";
 import { Feather } from "@expo/vector-icons";
-<<<<<<< Updated upstream
-import { View, Text, Image, TextInput, TouchableOpacity, ActivityIndicator } from "react-native";
-=======
 import {
     View,
     Text,
@@ -13,7 +10,6 @@ import {
     ActivityIndicator,
     StyleSheet,
 } from "react-native";
->>>>>>> Stashed changes
 
 const PostComposer = () => {
     const {
@@ -30,22 +26,6 @@ const PostComposer = () => {
     const { user } = useUser();
 
     return (
-<<<<<<< Updated upstream
-        <View className="border-b border-gray-100 p-4 bg-white">
-            <View className="flex-row items-center">
-                {/* bug not rendering */}
-                <Image source={{ uri: user?.imageUrl }}
-                    style={{
-                        height: 35,
-                        width: 35,
-                        borderRadius: 100
-                    }}
-                />
-                <Text>{user?.username}</Text>
-                <View className="flex-1">
-                    <TextInput
-                        className="text-gray-900 text-lg"
-=======
         <View style={styles.container}>
             <View style={styles.row}>
                 <Image
@@ -57,7 +37,6 @@ const PostComposer = () => {
                 <View style={styles.inputWrapper}>
                     <TextInput
                         style={styles.textInput}
->>>>>>> Stashed changes
                         placeholder="What's happening?"
                         placeholderTextColor="#657786"
                         multiline
@@ -69,79 +48,31 @@ const PostComposer = () => {
             </View>
 
             {selectedImage && (
-<<<<<<< Updated upstream
-                <View
-                    style={{
-                        marginTop: 12, // mt-3
-                        width: "100%",  // w-full
-                        height: 192,    // h-48 (48 * 4 = 192px)
-                        position: "relative",
-                    }}
-                >
-                    <Image
-                        source={{ uri: selectedImage }}
-                        style={{
-                            width: "100%",       // w-full
-                            height: "100%",      // h-full
-                            borderRadius: 16,    // rounded-2xl
-                        }}
-=======
                 <View style={styles.selectedImageWrapper}>
                     <Image
                         source={{ uri: selectedImage }}
                         style={styles.selectedImage}
->>>>>>> Stashed changes
                         resizeMode="cover"
                     />
                     <TouchableOpacity
                         onPress={removeImage}
-<<<<<<< Updated upstream
-                        style={{
-                            position: "absolute",
-                            top: 8,              // top-2
-                            right: 8,            // right-2
-                            width: 32,           // w-8
-                            height: 32,          // h-8
-                            backgroundColor: "rgba(0,0,0,0.6)", // bg-black/60
-                            borderRadius: 16,    // rounded-full
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-=======
                         style={styles.removeButton}
->>>>>>> Stashed changes
                     >
                         <Feather name="x" size={16} color="white" />
                     </TouchableOpacity>
                 </View>
             )}
 
-<<<<<<< Updated upstream
-
-            <View className="flex-row justify-between items-center mt-3">
-                <View className="flex-row">
-                    <TouchableOpacity className="m-4" onPress={pickImageFromGallery}>
-                        <Feather name="image" size={25} color="#1DA1F2" />
-                    </TouchableOpacity>
-                    <TouchableOpacity className="m-4" onPress={takePhoto}>
-=======
             <View style={styles.actionsRow}>
                 <View style={styles.actionButtonsLeft}>
                     <TouchableOpacity style={styles.actionButton} onPress={pickImageFromGallery}>
                         <Feather name="image" size={25} color="#1DA1F2" />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionButton} onPress={takePhoto}>
->>>>>>> Stashed changes
                         <Feather name="camera" size={25} color="#1DA1F2" />
                     </TouchableOpacity>
                 </View>
 
-<<<<<<< Updated upstream
-                <View className="flex-row items-center">
-                    {content.length > 0 && (
-                        <Text
-                            className={`text-sm mr-3 ${content.length > 260 ? "text-red-500" : "text-gray-500"}`}
-=======
                 <View style={styles.actionButtonsRight}>
                     {content.length > 0 && (
                         <Text
@@ -149,22 +80,16 @@ const PostComposer = () => {
                                 styles.charCount,
                                 content.length > 260 ? styles.charCountLimit : null,
                             ]}
->>>>>>> Stashed changes
                         >
                             {280 - content.length}
                         </Text>
                     )}
 
                     <TouchableOpacity
-<<<<<<< Updated upstream
-                        className={`px-6 py-2 rounded-full ${content.trim() || selectedImage ? "bg-blue-500" : "bg-gray-300"
-                            }`}
-=======
                         style={[
                             styles.postButton,
                             content.trim() || selectedImage ? styles.postButtonActive : styles.postButtonInactive,
                         ]}
->>>>>>> Stashed changes
                         onPress={createPost}
                         disabled={isCreating || !(content.trim() || selectedImage)}
                     >
@@ -172,17 +97,12 @@ const PostComposer = () => {
                             <ActivityIndicator size="small" color="white" />
                         ) : (
                             <Text
-<<<<<<< Updated upstream
-                                className={`font-semibold ${content.trim() || selectedImage ? "text-white" : "text-gray-500"
-                                    }`}
-=======
                                 style={[
                                     styles.postButtonText,
                                     content.trim() || selectedImage
                                         ? styles.postButtonTextActive
                                         : styles.postButtonTextInactive,
                                 ]}
->>>>>>> Stashed changes
                             >
                                 Post
                             </Text>
@@ -193,9 +113,6 @@ const PostComposer = () => {
         </View>
     );
 };
-<<<<<<< Updated upstream
-export default PostComposer;
-=======
 
 export default PostComposer;
 
@@ -295,4 +212,3 @@ const styles = StyleSheet.create({
         color: "#6B7280",
     },
 });
->>>>>>> Stashed changes
