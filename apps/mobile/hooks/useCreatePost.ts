@@ -34,7 +34,13 @@ export const useCreatePost = () => {
         } as any);
       }
 
+<<<<<<< Updated upstream
       return api.post("/posts", formData, { headers: { "Content-Type": "multipart/form-data" } });
+=======
+      return api.post("/posts", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+>>>>>>> Stashed changes
     },
     onSuccess: () => {
       setContent("");
@@ -42,8 +48,13 @@ export const useCreatePost = () => {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
       Alert.alert("Success", "Post created successfully!");
     },
+<<<<<<< Updated upstream
     onError: (error) => {
       Alert.alert("Error", `Failed to create post. Please try again.,${error}`);
+=======
+    onError: () => {
+      Alert.alert("Error", "Failed to create post. Please try again.");
+>>>>>>> Stashed changes
     },
   });
 
@@ -71,6 +82,10 @@ export const useCreatePost = () => {
         mediaTypes: ["images"],
       });
 
+<<<<<<< Updated upstream
+=======
+    if(result.assets)console.log(result.assets[0].uri)
+>>>>>>> Stashed changes
     if (!result.canceled) setSelectedImage(result.assets[0].uri);
   };
 

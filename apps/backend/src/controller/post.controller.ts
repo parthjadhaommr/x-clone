@@ -72,6 +72,7 @@ export const createPost: RequestHandler = asyncHandler(
         const { userId } = getAuth(req);
         const { content } = req.body;
         const imageFile = req.file;
+        console.log(imageFile)
         if (!content && !imageFile) {
             res.status(400).json({ error: "Post must contain either text or image" })
             return

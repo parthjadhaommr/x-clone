@@ -3,13 +3,24 @@ import { usePosts } from "@/hooks/usePosts";
 import { Post } from "@/types";
 import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import PostCard from "./PostCard";
+<<<<<<< Updated upstream
 
+=======
+import { useState } from "react";
+import CommentsModal from "./CommentModel";
+>>>>>>> Stashed changes
 
 const PostsList = ({ username }: { username?: string }) => {
     const { currentUser } = useCurrentUser();
     const { posts, isLoading, error, refetch, toggleLike, deletePost, checkIsLiked } =
         usePosts(username);
+<<<<<<< Updated upstream
 
+=======
+    const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+
+    const selectedPost = selectedPostId ? posts.find((p: Post) => p._id === selectedPostId) : null;
+>>>>>>> Stashed changes
 
     if (isLoading) {
         return (
@@ -47,12 +58,20 @@ const PostsList = ({ username }: { username?: string }) => {
                     post={post}
                     onLike={toggleLike}
                     onDelete={deletePost}
+<<<<<<< Updated upstream
+=======
+                    onComment={(post: Post) => setSelectedPostId(post._id)}
+>>>>>>> Stashed changes
                     currentUser={currentUser}
                     isLiked={checkIsLiked(post.likes, currentUser)}
                 />
             ))}
 
+<<<<<<< Updated upstream
             {/* <CommentsModal selectedPost={selectedPost} onClose={() => setSelectedPostId(null)} /> */}
+=======
+            <CommentsModal selectedPost={selectedPost} onClose={() => setSelectedPostId(null)} />
+>>>>>>> Stashed changes
         </>
     );
 };
