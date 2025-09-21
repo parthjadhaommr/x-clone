@@ -8,7 +8,7 @@ var user_controller_1 = require("../controller/user.controller");
 var auth_middleware_1 = require("../middleware/auth.middleware");
 var router = express_1.default.Router();
 router.get("/profile/:username", user_controller_1.getUserProfile);
-router.post("/me", auth_middleware_1.protectRoute, user_controller_1.getCurrentUser);
+router.get("/me", auth_middleware_1.protectRoute, user_controller_1.getCurrentUser);
 router.post("/sync", auth_middleware_1.protectRoute, user_controller_1.syncUser);
 router.put("/profile", auth_middleware_1.protectRoute, user_controller_1.updateUserProfile);
 router.post("/follow/:targetUserId", auth_middleware_1.protectRoute, user_controller_1.followUser);

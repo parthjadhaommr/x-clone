@@ -12,7 +12,10 @@ interface PostCardProps {
 }
 
 const PostCard = ({ currentUser, onDelete, onLike, post, isLiked }: PostCardProps) => {
-    const isOwnPost = post.user._id === currentUser._id;
+    if (!currentUser?._id) {
+        return
+    }
+    const isOwnPost = post?.user?._id === currentUser?._id;
 
     const handleDelete = () => {
         Alert.alert("Delete Post", "Are you sure you want to delete this post?", [
