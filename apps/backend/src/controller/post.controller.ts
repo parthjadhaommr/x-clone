@@ -114,6 +114,7 @@ export const createPost: RequestHandler = asyncHandler(
         });
 
         res.status(201).json({ post })
+        return
     }
 )
 
